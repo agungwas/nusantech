@@ -51,18 +51,19 @@ function App() {
   return (
       <div className="d-flex flex-column justify-content-center align-items-center vh-100">
         <div className='card bg-info'>
-
-          <div className="m-3">
-            <input type="number" id="pertama" onChange={(e) => ganti(e)} />
-            <input type="checkbox" className="m-2" id="pertama" onChange={(e) => check(e)} />
-          </div>
-          <div className="m-3">
-            <input type="number" id="kedua" onChange={(e) => ganti(e)} />
-            <input type="checkbox" className="m-2" id="kedua" onChange={(e) => check(e)} />
-          </div>
-          <div className="m-3">
-            <input type="number" id="ketiga" onChange={(e) => ganti(e)} />
-            <input type="checkbox" className="m-2" id="ketiga" onChange={(e) => check(e)} />
+          <div className='d-flex flex-column align-items-center'>
+            <div className="m-3">
+              <input type="number" id="pertama" onChange={(e) => ganti(e)} />
+              <input type="checkbox" className="m-2" id="pertama" onChange={(e) => check(e)} />
+            </div>
+            <div className="m-3">
+              <input type="number" id="kedua" onChange={(e) => ganti(e)} />
+              <input type="checkbox" className="m-2" id="kedua" onChange={(e) => check(e)} />
+            </div>
+            <div className="m-3">
+              <input type="number" id="ketiga" onChange={(e) => ganti(e)} />
+              <input type="checkbox" className="m-2" id="ketiga" onChange={(e) => check(e)} />
+            </div>
           </div>
           <div className='d-flex justify-content-center'>
             <button type="submit" className="btn btn-secondary m-1" id='kali' onClick={e=> hasilnya(e)}>X</button>
