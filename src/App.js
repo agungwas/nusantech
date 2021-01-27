@@ -2,7 +2,11 @@ import { useState } from 'react';
 
 function App() {
   let [angka, setAngka] = useState({})
-  let [checkbox, setCheckbox] = useState({})
+  let [checkbox, setCheckbox] = useState({
+    pertama: false,
+    kedua: false,
+    ketiga: false
+  })
   let [tujuan, setTujuan] = useState(0)
   function ganti (e) {
     angka[e.target.id] = e.target.value
@@ -25,7 +29,7 @@ function App() {
       }
     }
 
-    if (jumlahChecked < 2) setTujuan('error')
+    if (jumlahChecked < 2) setTujuan(false)
     else {
       let temp = arrayAngkaChecked[0]
       if (e.target.id === 'kali') {
@@ -45,29 +49,33 @@ function App() {
   }
 
   return (
-      <div className="d-flex flex-column justify-content-center align-items-center bg-info vh-100" style={{ color: "blue" }}>
-        <div className="m-3">
-          <input type="number" id="pertama" onChange={(e) => ganti(e)} />
-          <input type="checkbox" className="m-2" id="pertama" onChange={(e) => check(e)} />
-        </div>
-        <div className="m-3">
-          <input type="number" id="kedua" onChange={(e) => ganti(e)} />
-          <input type="checkbox" className="m-2" id="kedua" onChange={(e) => check(e)} />
-        </div>
-        <div className="m-3">
-          <input type="number" id="ketiga" onChange={(e) => ganti(e)} />
-          <input type="checkbox" className="m-2" id="ketiga" onChange={(e) => check(e)} />
-        </div>
-        <div>
-          <button type="submit" className="btn btn-secondary m-1" id='kali' onClick={e=> hasilnya(e)}>X</button>
-          <button type="submit" className="btn btn-secondary m-1" id='bagi' onClick={e=> hasilnya(e)}>:</button>
-          <button type="submit" className="btn btn-secondary m-1" id='tambah' onClick={e=> hasilnya(e)}>+</button>
-          <button type="submit" className="btn btn-secondary m-1" id='kurang' onClick={e=> hasilnya(e)}>-</button>
-        </div>
-        <div>
-          <p className='fw-bold text-dark'>
-            Hasil : {tujuan}
-          </p>
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100">
+        <div className='card bg-info'>
+
+          <div className="m-3">
+            <input type="number" id="pertama" onChange={(e) => ganti(e)} />
+            <input type="checkbox" className="m-2" id="pertama" onChange={(e) => check(e)} />
+          </div>
+          <div className="m-3">
+            <input type="number" id="kedua" onChange={(e) => ganti(e)} />
+            <input type="checkbox" className="m-2" id="kedua" onChange={(e) => check(e)} />
+          </div>
+          <div className="m-3">
+            <input type="number" id="ketiga" onChange={(e) => ganti(e)} />
+            <input type="checkbox" className="m-2" id="ketiga" onChange={(e) => check(e)} />
+          </div>
+          <div className='d-flex justify-content-center'>
+            <button type="submit" className="btn btn-secondary m-1" id='kali' onClick={e=> hasilnya(e)}>X</button>
+            <button type="submit" className="btn btn-secondary m-1" id='bagi' onClick={e=> hasilnya(e)}>:</button>
+            <button type="submit" className="btn btn-secondary m-1" id='tambah' onClick={e=> hasilnya(e)}>+</button>
+            <button type="submit" className="btn btn-secondary m-1" id='kurang' onClick={e=> hasilnya(e)}>-</button>
+          </div>
+          <div className='mt-2 d-flex justify-content-center wh-100'>
+            {tujuan !== false && (<p className='fw-bold text-light fs-3 wh-100'>
+              Result : {tujuan}
+            </p>)}
+            {tujuan === false && (<div className="wh-100 alert alert-danger text-wrap fw-bold">Error! minimum checked box is 2</div>)}
+          </div>
         </div>
       </div>
 
